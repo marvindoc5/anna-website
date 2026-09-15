@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 1400" fill="none" aria-hidden="true">
+  <defs>
+    <path id="echo-form"
+      d="M260,20 C 300,20 332,52 332,92 C 332,124 312,151 284,161
+         C 330,180 366,220 386,290 C 410,375 424,480 428,600
+         C 432,740 420,880 388,1010 C 372,1075 350,1130 260,1130
+         C 170,1130 148,1075 132,1010 C 100,880 88,740 92,600
+         C 96,480 110,375 134,290 C 154,220 190,180 236,161
+         C 208,151 188,124 188,92 C 188,52 220,20 260,20 Z" />
+  </defs>
+
+  <g opacity="0.38">
+    <use href="#echo-form" fill="#8C9B76" transform="translate(-70,40) scale(0.92) rotate(-4 260 560)"/>
+  </g>
+  <g opacity="0.42">
+    <use href="#echo-form" fill="#E9C3A0" transform="translate(46,130) scale(0.8) rotate(3 260 560)"/>
+  </g>
+  <g opacity="0.55">
+    <use href="#echo-form" fill="#C1652E" transform="translate(-10,220) scale(0.66) rotate(-2 260 560)"/>
+  </g>
+</svg>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}My Approach — Matsi Counselling{% endblock %}
+
+{% block content %}
+<section class="section section-cream" style="padding-bottom:0;">
+  <div class="container">
+    <div class="approach-layout">
+      <div class="approach-content">
+        <section>
+          <h1 class="page-title">My Approach</h1>
+          <div class="divider"></div>
+          <div class="prose">
+            <p>My approach to counselling is collaborative, reflective, and tailored to each individual. Rather than following a fixed method, I aim to create a space where we can explore your experiences with curiosity, openness, and compassion, focusing on what feels most relevant and meaningful to you.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Perspectives That Inform My Work</h2>
+          <div class="prose">
+            <p>A central part of our work is exploring your inner dialogue—the ongoing conversations you have with yourself. Together, we examine how these internal narratives influence the way you feel, relate to others, and make sense of your experiences. By understanding how these conversations have developed over time, we can begin to recognise recurring patterns and consider ways of responding that feel more aligned with who you are and how you want to live.</p>
+            <p>My work is informed by health and social psychology, systemic perspectives, parts-oriented thinking, and hypnosis techniques. I draw from these perspectives flexibly, adapting our work to your individual needs, preferences, and goals.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Hypnosis</h2>
+          <div class="approach-hypnosis">
+            <div class="prose">
+              <p>Hypnosis is one of several tools I may incorporate into our work when it feels appropriate and aligned with your goals. It can offer a way to slow down, focus your attention, and explore thoughts, emotions, and patterns from a different perspective.</p>
+              <p>Despite common misconceptions, hypnosis does not involve losing control or being unconscious. Instead, it is a natural state of focused attention where you remain aware, engaged, and able to make choices throughout the process.</p>
+              <p style="margin-bottom:0;">Whether hypnosis becomes part of our work is always a collaborative decision, guided by what feels most supportive and meaningful for you.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="approach-cta">
+          <h3>Ready to take the next step?</h3>
+          <p style="color:var(--text);">Reach out to get in touch or book a free introductory call.</p>
+          <a class="btn btn-primary" href="{{ url_for('contact') }}">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="approach-echo-col">
+        <div class="approach-echo-sticky">
+          <img src="{{ url_for('static', path='images/echo-figure.svg') }}" alt="" style="max-width:280px; width:100%;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

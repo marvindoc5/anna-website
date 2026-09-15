@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Contact — Matsi Counselling{% endblock %}
+
+{% block content %}
+<section class="page-hero section-cream">
+  <div class="container">
+    <div class="contact-layout">
+
+      {% if submitted %}
+      <div class="confirmation-box">
+        <div class="icon-check">&#10003;</div>
+        <h1 class="page-title" style="font-size:1.9rem;">Thank you for getting in touch</h1>
+        <p>I'll get back to you as soon as possible to arrange a suitable time for our appointment.</p>
+        <a class="btn btn-primary" href="{{ url_for('home') }}">Back to Home</a>
+      </div>
+      {% else %}
+
+      <div class="contact-intro">
+        <h1 class="page-title">Get in Touch</h1>
+        <div class="divider"></div>
+        <p>Whether you're interested in an introductory call or counselling sessions, you can get in touch using the form below. Reach out to me and I'll get back to you as soon as possible to arrange a suitable time for our appointment.</p>
+      </div>
+
+      <form class="contact-form" method="post" action="{{ url_for('contact_submit') }}" novalidate>
+        {% if errors and errors.form %}
+        <div class="field-error is-visible" style="margin-bottom:24px;">{{ errors.form }}</div>
+        {% endif %}
+
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Leave this field blank</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required value="{{ form_data.name if form_data else '' }}">
+          {% if errors and errors.name %}<div class="field-error is-visible">{{ errors.name }}</div>{% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Your email address" required value="{{ form_data.email if form_data else '' }}">
+          {% if errors and errors.email %}<div class="field-error is-visible">{{ errors.email }}</div>{% endif %}
+        </div>
+
+        <div class="form-group">
+          <label>What are you interested in?</label>
+          <div class="choice-group" role="radiogroup">
+            <label class="choice-pill">
+              <input type="radio" name="interest" value="initial_call" required {{ 'checked' if form_data and form_data.interest == 'initial_call' }}>
+              <span>Initial Call</span>
+            </label>
+            <label class="choice-pill">
+              <input type="radio" name="interest" value="counselling_session" {{ 'checked' if form_data and form_data.interest == 'counselling_session' }}>
+              <span>Counselling Session</span>
+            </label>
+          </div>
+          {% if errors and errors.interest %}<div class="field-error is-visible">{{ errors.interest }}</div>{% endif %}
+        </div>
+
+        <div class="form-group">
+          <label>What type of counselling are you looking for?</label>
+          <div class="choice-group" role="radiogroup">
+            <label class="choice-pill">
+              <input type="radio" name="counselling_type" value="individual" required {{ 'checked' if form_data and form_data.counselling_type == 'individual' }}>
+              <span>Individual Counselling</span>
+            </label>
+            <label class="choice-pill">
+              <input type="radio" name="counselling_type" value="relationship" {{ 'checked' if form_data and form_data.counselling_type == 'relationship' }}>
+              <span>Relationship Counselling</span>
+            </label>
+          </div>
+          {% if errors and errors.counselling_type %}<div class="field-error is-visible">{{ errors.counselling_type }}</div>{% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message <span class="optional-tag">(optional)</span></label>
+          <textarea id="message" name="message" placeholder="Is there anything you'd like me to know?">{{ form_data.message if form_data else '' }}</textarea>
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-row">
+            <input type="checkbox" id="agree" name="agree" required {{ 'checked' if form_data and form_data.agree }}>
+            <label for="agree">I have read and agree to the <a href="{{ url_for('principles') }}">Practice Principles</a>.</label>
+          </div>
+          {% if errors and errors.agree %}<div class="field-error is-visible">{{ errors.agree }}</div>{% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+      </form>
+
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/contact-form.js') }}"></script>
+{% endblock %}

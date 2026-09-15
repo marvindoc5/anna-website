@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Services — Matsi Counselling{% endblock %}
+
+{% block content %}
+<section class="page-hero section-cream">
+  <img class="blob-field" src="{{ url_for('static', path='images/blob-corner-tl.svg') }}" alt="" style="width:420px; height:auto; top:-60px; left:-80px; right:auto; bottom:auto;">
+  <img class="blob-field" src="{{ url_for('static', path='images/blob-corner-br.svg') }}" alt="" style="width:420px; height:auto; bottom:-80px; right:-100px; top:auto; left:auto;">
+
+  <div class="container">
+    <h1 class="page-title">Services</h1>
+    <div class="divider"></div>
+
+    <div class="services-grid">
+      <!-- Individual Counselling -->
+      <div class="service-card" id="individual-counselling">
+        <div class="service-card-main">
+          <div class="service-card-title">
+            <div class="service-card-icon">
+              <img src="{{ url_for('static', path='images/individual-counselling-icon.png') }}" alt="Individual counselling icon">
+            </div>
+            <h3>Individual Counselling</h3>
+          </div>
+          <p>Individual counselling offers a supportive space to explore your inner world and the experiences that have shaped how you relate to yourself and others. Together, we work towards greater self-understanding, awareness of recurring patterns, and ways of responding that feel more aligned with your goals and values.</p>
+        </div>
+        <div class="service-card-side">
+          <div class="service-price">&euro;70</div>
+          <div class="service-meta">per session<br>50 minutes</div>
+          <a class="btn btn-quiet" href="{{ url_for('contact') }}">Schedule</a>
+        </div>
+      </div>
+
+      <!-- Relationship Counselling -->
+      <div class="service-card" id="relationship-counselling">
+        <div class="service-card-main">
+          <div class="service-card-title">
+            <div class="service-card-icon">
+              <img src="{{ url_for('static', path='images/relationship-counselling-icon.png') }}" alt="Relationship counselling icon">
+            </div>
+            <h3>Relationship Counselling</h3>
+          </div>
+          <p>Relationship counselling offers a supportive space for couples, polyamorous relationships, and other relationship structures to explore communication, connection, and shared experiences. Together, we explore each person's experiences and perspectives, creating space for greater understanding, deeper connection, and more meaningful ways of relating to one another.</p>
+        </div>
+        <div class="service-card-side">
+          <div class="service-price">&euro;100</div>
+          <div class="service-meta">per session<br>50 minutes</div>
+          <a class="btn btn-quiet" href="{{ url_for('contact') }}">Schedule</a>
+        </div>
+      </div>
+
+      <!-- Individual Package -->
+      <div class="service-card">
+        <div class="service-card-main">
+          <div class="service-card-title">
+            <div class="service-card-icon">
+              <img src="{{ url_for('static', path='images/individual-counselling-icon.png') }}" alt="Individual counselling icon">
+            </div>
+            <div>
+              <h3>Individual Counselling</h3>
+              <span class="package-tag">6-Session Package</span>
+            </div>
+          </div>
+          <p>For those who would like to continue the counselling process over time, this package includes six sessions at a reduced rate.</p>
+        </div>
+        <div class="service-card-side">
+          <div class="service-price">&euro;390</div>
+          <div class="service-meta">6 sessions<br>50 minutes each<br>valid for 6 months</div>
+          <a class="btn btn-quiet" href="{{ url_for('contact') }}">Schedule</a>
+        </div>
+      </div>
+
+      <!-- Relationship Package -->
+      <div class="service-card">
+        <div class="service-card-main">
+          <div class="service-card-title">
+            <div class="service-card-icon">
+              <img src="{{ url_for('static', path='images/relationship-counselling-icon.png') }}" alt="Relationship counselling icon">
+            </div>
+            <div>
+              <h3>Relationship Counselling</h3>
+              <span class="package-tag">6-Session Package</span>
+            </div>
+          </div>
+          <p>For couples and diverse relationship structures who would like to continue the counselling process over time, this package includes six sessions at a reduced rate.</p>
+        </div>
+        <div class="service-card-side">
+          <div class="service-price">&euro;570</div>
+          <div class="service-meta">6 sessions<br>50 minutes each<br>valid for 6 months</div>
+          <a class="btn btn-quiet" href="{{ url_for('contact') }}">Schedule</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="getting-started">
+      <h2 class="getting-started-title" style="text-align:center;">Getting Started</h2>
+      <div class="gs-steps">
+        <div class="gs-step">
+          <div class="start-step-num">01</div>
+          <h3>Initial Call</h3>
+          <p style="margin:0;">Book an initial 20-minute online call free of charge.</p>
+        </div>
+        <div class="gs-connector">&rarr;</div>
+        <div class="gs-step">
+          <div class="start-step-num">02</div>
+          <h3>First Session</h3>
+          <p style="margin:0;">Book your first online session at your convenience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}About Me — Matsi Counselling{% endblock %}
+
+{% block content %}
+<section class="page-hero section-cream" style="padding-bottom:0;">
+  <img class="blob-field" src="{{ url_for('static', path='images/blob-about.svg') }}" alt="" style="top:auto; bottom:0;">
+  <div class="container">
+    <div class="about-layout">
+      <div>
+        <h1 class="page-title">Biography</h1>
+        <div class="divider"></div>
+        <div class="prose">
+          <p>My name is Anna Matsi, and I am a Berlin-based psychologist, counsellor, and certified hypnotherapist. I hold a Master's degree in Health and Social Psychology from Maastricht University, alongside professional training in hypnotherapy.</p>
+          <p>Over the years, I have worked in a variety of settings, supporting neurodivergent individuals, unaccompanied minor refugees, and clients in private practice. Having lived in Cyprus, the Netherlands, and Germany, I have developed an appreciation for the ways culture, relationships, and life experiences shape how we see ourselves, relate to others, and navigate the world around us.</p>
+          <p>My work is guided by curiosity, compassion, and a deep respect for each person's individual story. I believe that our experiences can only be understood within the context of our unique histories, relationships, and circumstances, and I aim to create space for this complexity in my work with others.</p>
+        </div>
+        <a class="btn btn-primary" href="{{ url_for('approach') }}">Read More About My Approach</a>
+      </div>
+      <div class="about-photo-col">
+        <div class="about-photo-frame">
+          <div class="photo-placeholder">Photo of Anna Matsi<br>— placeholder —</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

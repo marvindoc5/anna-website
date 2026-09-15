@@ -1,0 +1,38 @@
+# Test your FastAPI endpoints
+
+GET http://127.0.0.1:8000/
+Accept: text/html
+
+###
+
+GET http://127.0.0.1:8000/about
+Accept: text/html
+
+###
+
+GET http://127.0.0.1:8000/approach
+Accept: text/html
+
+###
+
+GET http://127.0.0.1:8000/services
+Accept: text/html
+
+###
+
+GET http://127.0.0.1:8000/contact
+Accept: text/html
+
+###
+
+GET http://127.0.0.1:8000/practice-principles
+Accept: text/html
+
+###
+
+POST http://127.0.0.1:8000/contact
+Content-Type: application/x-www-form-urlencoded
+
+name=Test+User&email=test%40example.com&interest=initial_call&counselling_type=individual&message=Hello&agree=on
+
+###

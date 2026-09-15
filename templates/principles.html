@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Practice Principles — Matsi Counselling{% endblock %}
+
+{% block content %}
+<section class="page-hero section-cream">
+  <div class="container">
+    <h1 class="page-title">Practice Principles</h1>
+    <div class="divider"></div>
+
+    <div class="principles-layout">
+      <div class="principle-section">
+        <h2>Anti-discrimination &amp; Inclusivity</h2>
+        <p>Matsi Counselling is committed to providing a respectful, inclusive, and non-judgmental space for all clients. The practice welcomes individuals of all backgrounds and does not tolerate discrimination based on race, ethnicity, gender identity, sexual orientation, religion, disability, age, relationship status, or any other aspect of identity.</p>
+      </div>
+
+      <div class="principle-section">
+        <h2>Accessibility &amp; Fees</h2>
+        <p>Matsi Counselling believes that mental health support should be as accessible as possible. For this reason, a reduced session fee may be offered to students, individuals experiencing financial hardship, and people who may face barriers to accessing support. Clients are welcome to get in touch to discuss whether this may apply to their circumstances.</p>
+        <p>Session fees and payment arrangements are agreed upon before beginning counselling. For online sessions, payment should be completed as soon as the invoice is received, unless otherwise arranged.</p>
+      </div>
+
+      <div class="principle-section">
+        <h2>Cancellation &amp; Rescheduling</h2>
+        <p>If a client needs to cancel or reschedule an appointment, at least 48 hours' notice is required. Sessions cancelled with less than 48 hours' notice may be charged at the full session fee. Exceptions may be considered in cases of unexpected circumstances.</p>
+      </div>
+
+      <div class="principle-section">
+        <h2>Confidentiality &amp; Privacy</h2>
+        <p>Confidentiality is a fundamental part of the counselling process. Matsi Counselling treats all information shared during sessions with respect and ensures that client information and records are handled securely and in accordance with professional ethical standards and applicable data protection regulations.</p>
+        <p>Any information collected is used solely for the purpose of providing effective counselling support and maintaining appropriate professional records.</p>
+      </div>
+
+      <div class="principle-section">
+        <h2>Packages</h2>
+        <p>Package sessions are intended to be used within six months of purchase. If circumstances arise that make it difficult to use the sessions within this period, please get in touch to discuss the situation.</p>
+      </div>
+
+      <div class="principle-section">
+        <h2>Data Protection</h2>
+        <p>Matsi Counselling takes the protection of personal data seriously. Client information is collected, stored, and processed securely in accordance with applicable data protection regulations, including the General Data Protection Regulation (GDPR).</p>
+      </div>
+
+      <div class="principle-section">
+        <h2>Scope of Practice</h2>
+        <p>Matsi Counselling provides counselling and hypnotherapy services within the scope of its professional training and experience. Sessions are intended to support increased self-awareness, emotional wellbeing, and the development of coping strategies.</p>
+        <p>Counselling and hypnotherapy sessions are not a replacement for medical, psychiatric, or emergency care. If a client's needs fall outside the scope of the practice, appropriate recommendations or referrals to other professionals will be discussed.</p>
+      </div>
+
+      <div class="principle-section">
+        <h2>Client Autonomy &amp; Collaboration</h2>
+        <p>Matsi Counselling values collaboration and respects each client's autonomy throughout the counselling process. Clients are encouraged to make informed choices about their support and are free to discuss, pause, or end sessions at any time.</p>
+      </div>
+
+      <div class="principle-section">
+        <h2>Online Sessions</h2>
+        <p>Matsi Counselling provides sessions online using secure digital platforms. Clients are encouraged to participate from a private and confidential space and to ensure they have a stable internet connection.</p>
+        <p>While reasonable steps are taken to maintain privacy and security, online sessions involve the use of technology and may be subject to technical limitations.</p>
+      </div>
+
+      <div class="principle-section">
+        <h2>Communication Outside Sessions</h2>
+        <p>Email and other forms of communication outside scheduled sessions are intended for administrative purposes, such as scheduling and practical questions. They are not intended for crisis support or ongoing counselling outside appointments.</p>
+      </div>
+
+      <div class="principle-section">
+        <h2>Crisis Support</h2>
+        <p>Matsi Counselling is not an emergency or crisis service. If immediate support is required due to a crisis or risk of harm, clients are encouraged to contact local emergency services or appropriate crisis resources.</p>
+      </div>
+    </div>
+
+    <div class="principles-cta">
+      <a class="btn btn-primary" href="{{ url_for('contact') }}">Get in Touch</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
