@@ -858,6 +858,12 @@ button {
   justify-content: center;
 }
 
+.echo-figure-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+}
+
 .approach-hypnosis {
   background: var(--peach-soft);
   border-radius: var(--radius-lg);
@@ -886,8 +892,13 @@ button {
   .approach-echo-sticky {
     position: static;
     height: auto;
-    opacity: 0.5;
-    margin-bottom: 12px;
+    opacity: 0.45;
+    margin-bottom: 4px;
+  }
+  .echo-figure-img {
+    max-width: 96px;
+    max-height: 180px;
+    object-fit: contain;
   }
 }
 
