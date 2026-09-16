@@ -11,7 +11,7 @@ from typing import Annotated
 
 from dotenv import load_dotenv
 from email_validator import EmailNotValidError, validate_email
-from fastapi import FastAPI, Form, Request
+from fastapi import BackgroundTasks, FastAPI, Form, Request
 from fastapi.responses import HTMLResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -211,7 +211,7 @@ def send_emails(record: dict) -> None:
     )
 
     try:
-        with smtplib.SMTP(smtp_host, int(smtp_port)) as server:
+        with smtplib.SMTP(smtp_host, int(smtp_port), timeout=10) as server:
             server.starttls()
             server.login(smtp_user, smtp_password)
             server.send_message(visitor_msg)
@@ -223,6 +223,7 @@ def send_emails(record: dict) -> None:
 @app.post("/contact", response_class=HTMLResponse)
 async def contact_submit(
     request: Request,
+    background_tasks: BackgroundTasks,
     name: Annotated[str, Form(max_length=150)] = "",
     email: Annotated[str, Form(max_length=254)] = "",
     interest: str = Form(""),
@@ -286,6 +287,6 @@ async def contact_submit(
         "submitted_at": datetime.now(timezone.utc).isoformat(),
     }
     store_submission(record)
-    send_emails(record)
+    background_tasks.add_task(send_emails, record)
 
     return render(request, "contact.html", "contact", submitted=True)
