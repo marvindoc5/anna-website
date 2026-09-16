@@ -408,16 +408,10 @@ button {
   flex: none;
   width: 52px;
   height: 52px;
-  border-radius: 50%;
+  border-radius: 12px;
   background: var(--cream);
-  color: var(--sage-deep);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  text-align: center;
-  line-height: 1.1;
+  padding: 5px;
+  object-fit: contain;
 }
 
 .footer-membership p {
