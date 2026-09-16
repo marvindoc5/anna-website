@@ -216,6 +216,7 @@ def send_emails(record: dict) -> None:
             server.login(smtp_user, smtp_password)
             server.send_message(visitor_msg)
             server.send_message(notify_msg)
+        logger.info("Contact form emails sent successfully for submission from %s", record["email"])
     except Exception:
         logger.exception("Failed to send contact form emails")
 
