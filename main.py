@@ -1,11 +1,10 @@
 import json
 import logging
 import os
-import smtplib
 import time
+import urllib.request
 from collections import defaultdict
 from datetime import datetime, timezone
-from email.message import EmailMessage
 from pathlib import Path
 from typing import Annotated
 
@@ -167,40 +166,45 @@ def store_submission(record: dict) -> None:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
+def _send_via_resend(api_key: str, from_email: str, to: str, subject: str, text: str) -> None:
+    payload = json.dumps({"from": from_email, "to": [to], "subject": subject, "text": text}).encode()
+    req = urllib.request.Request(
+        "https://api.resend.com/emails",
+        data=payload,
+        method="POST",
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=10) as response:
+        response.read()
+
+
 def send_emails(record: dict) -> None:
     """Send a confirmation email to the visitor and a notification to the
-    practice. No-ops (and logs) if SMTP credentials are not configured yet —
-    wire up SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASSWORD when deploying."""
+    practice via Resend's HTTPS API. Raw SMTP doesn't work on most PaaS free
+    tiers (outbound SMTP ports are commonly blocked), so this goes over
+    HTTPS instead. No-ops (and logs) if RESEND_API_KEY isn't configured yet."""
 
-    smtp_host = os.getenv("SMTP_HOST")
-    smtp_port = os.getenv("SMTP_PORT", "587")
-    smtp_user = os.getenv("SMTP_USER")
-    smtp_password = os.getenv("SMTP_PASSWORD")
-    from_email = os.getenv("FROM_EMAIL", PRACTICE_EMAIL)
+    api_key = os.getenv("RESEND_API_KEY")
+    from_email = os.getenv("FROM_EMAIL", "Matsi Counselling <hello@matsicounselling.com>")
 
-    if not (smtp_host and smtp_user and smtp_password):
+    if not api_key:
         logger.info(
-            "SMTP not configured — skipping email send for submission from %s",
+            "RESEND_API_KEY not configured — skipping email send for submission from %s",
             record["email"],
         )
         return
 
-    visitor_msg = EmailMessage()
-    visitor_msg["Subject"] = "Thank you for getting in touch — Matsi Counselling"
-    visitor_msg["From"] = from_email
-    visitor_msg["To"] = record["email"]
-    visitor_msg.set_content(
+    visitor_text = (
         "Thank you for getting in touch with Matsi Counselling.\n\n"
         "I've received your message and will get back to you as soon as "
         "possible to arrange a suitable time for our appointment.\n\n"
         "Warmly,\nAnna Matsi\nMatsi Counselling"
     )
 
-    notify_msg = EmailMessage()
-    notify_msg["Subject"] = f"New contact form submission from {record['name']}"
-    notify_msg["From"] = from_email
-    notify_msg["To"] = PRACTICE_EMAIL
-    notify_msg.set_content(
+    notify_text = (
         "New submission from the Matsi Counselling contact form:\n\n"
         f"Name: {record['name']}\n"
         f"Email: {record['email']}\n"
@@ -211,11 +215,14 @@ def send_emails(record: dict) -> None:
     )
 
     try:
-        with smtplib.SMTP(smtp_host, int(smtp_port), timeout=10) as server:
-            server.starttls()
-            server.login(smtp_user, smtp_password)
-            server.send_message(visitor_msg)
-            server.send_message(notify_msg)
+        _send_via_resend(
+            api_key, from_email, record["email"],
+            "Thank you for getting in touch — Matsi Counselling", visitor_text,
+        )
+        _send_via_resend(
+            api_key, from_email, PRACTICE_EMAIL,
+            f"New contact form submission from {record['name']}", notify_text,
+        )
         logger.info("Contact form emails sent successfully for submission from %s", record["email"])
     except Exception:
         logger.exception("Failed to send contact form emails")
