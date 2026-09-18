@@ -33,19 +33,19 @@
 
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required value="{{ form_data.name if form_data else '' }}">
+          <input type="text" id="name" name="name" class="{{ 'has-error' if errors and errors.name else '' }}" placeholder="Your name" required value="{{ form_data.name if form_data else '' }}">
           {% if errors and errors.name %}<div class="field-error is-visible">{{ errors.name }}</div>{% endif %}
         </div>
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="Your email address" required value="{{ form_data.email if form_data else '' }}">
+          <input type="email" id="email" name="email" class="{{ 'has-error' if errors and errors.email else '' }}" placeholder="Your email address" required value="{{ form_data.email if form_data else '' }}">
           {% if errors and errors.email %}<div class="field-error is-visible">{{ errors.email }}</div>{% endif %}
         </div>
 
         <div class="form-group">
           <label>What are you interested in?</label>
-          <div class="choice-group" role="radiogroup">
+          <div class="choice-group {{ 'has-error' if errors and errors.interest else '' }}" role="radiogroup">
             <label class="choice-pill">
               <input type="radio" name="interest" value="initial_call" required {{ 'checked' if form_data and form_data.interest == 'initial_call' }}>
               <span>Initial Call</span>
@@ -60,7 +60,7 @@
 
         <div class="form-group">
           <label>What type of counselling are you looking for?</label>
-          <div class="choice-group" role="radiogroup">
+          <div class="choice-group {{ 'has-error' if errors and errors.counselling_type else '' }}" role="radiogroup">
             <label class="choice-pill">
               <input type="radio" name="counselling_type" value="individual" required {{ 'checked' if form_data and form_data.counselling_type == 'individual' }}>
               <span>Individual Counselling</span>
