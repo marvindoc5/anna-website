@@ -167,8 +167,13 @@ def store_submission(record: dict) -> None:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
-def _send_via_resend(api_key: str, from_email: str, to: str, subject: str, text: str) -> None:
-    payload = json.dumps({"from": from_email, "to": [to], "subject": subject, "text": text}).encode()
+def _send_via_resend(
+    api_key: str, from_email: str, to: str, subject: str, text: str, reply_to: str | None = None
+) -> None:
+    body_data = {"from": from_email, "to": [to], "subject": subject, "text": text}
+    if reply_to:
+        body_data["reply_to"] = reply_to
+    payload = json.dumps(body_data).encode()
     req = urllib.request.Request(
         "https://api.resend.com/emails",
         data=payload,
@@ -205,11 +210,19 @@ def send_emails(record: dict) -> None:
         )
         return
 
+    first_name = record["name"].strip().split()[0] if record["name"].strip() else "there"
+
     visitor_text = (
-        "Thank you for getting in touch with Matsi Counselling.\n\n"
-        "I've received your message and will get back to you as soon as "
-        "possible to arrange a suitable time for our appointment.\n\n"
-        "Warmly,\nAnna Matsi\nMatsi Counselling"
+        f"Dear {first_name},\n\n"
+        "Thank you for reaching out to Matsi Counselling — I really appreciate you taking this step.\n\n"
+        "I've received your message and will get back to you personally within the next couple of "
+        "days to arrange a suitable time together.\n\n"
+        "If anything comes up or you'd like to share more in the meantime, feel free to reply "
+        "directly to this email.\n\n"
+        "Warmly,\n\n"
+        "Anna Matsi\n"
+        "Psychologist, Counsellor & Certified Hypnotherapist\n"
+        "Matsi Counselling"
     )
 
     notify_text = (
@@ -226,6 +239,7 @@ def send_emails(record: dict) -> None:
         _send_via_resend(
             api_key, from_email, record["email"],
             "Thank you for getting in touch — Matsi Counselling", visitor_text,
+            reply_to=PRACTICE_EMAIL,
         )
         _send_via_resend(
             api_key, from_email, PRACTICE_EMAIL,
