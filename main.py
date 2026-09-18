@@ -176,6 +176,8 @@ def _send_via_resend(api_key: str, from_email: str, to: str, subject: str, text:
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
+            "Accept": "application/json",
+            "User-Agent": "matsi-counselling-website/1.0",
         },
     )
     try:
