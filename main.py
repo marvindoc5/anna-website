@@ -2,6 +2,7 @@ import json
 import logging
 import os
 import time
+import urllib.error
 import urllib.request
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -177,8 +178,13 @@ def _send_via_resend(api_key: str, from_email: str, to: str, subject: str, text:
             "Content-Type": "application/json",
         },
     )
-    with urllib.request.urlopen(req, timeout=10) as response:
-        response.read()
+    try:
+        with urllib.request.urlopen(req, timeout=10) as response:
+            response.read()
+    except urllib.error.HTTPError as e:
+        body = e.read().decode(errors="replace")
+        logger.error("Resend API error %s sending to %s: %s", e.code, to, body)
+        raise
 
 
 def send_emails(record: dict) -> None:
