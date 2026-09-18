@@ -1151,6 +1151,16 @@ button {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  padding: 10px 12px;
+  margin: -10px -12px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.checkbox-row.has-error {
+  border-color: var(--terracotta);
+  background: rgba(193, 101, 46, 0.08);
 }
 
 .checkbox-row input {
