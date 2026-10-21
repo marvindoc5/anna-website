@@ -148,6 +148,16 @@ button {
   color: var(--cream);
 }
 
+.btn-sage {
+  background: var(--sage-deep);
+  color: var(--cream);
+}
+
+.btn-sage:hover {
+  background: var(--sage);
+  box-shadow: var(--shadow-card);
+}
+
 .btn-quiet {
   background: var(--cream);
   color: var(--terracotta-deep);
@@ -229,10 +239,14 @@ button {
 }
 
 .brand {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  color: var(--sage-deep);
   flex: none;
+  display: flex;
+  align-items: center;
+}
+
+.brand img {
+  height: 42px;
+  width: auto;
 }
 
 .nav-links {
@@ -360,16 +374,9 @@ button {
   padding-bottom: 40px;
 }
 
-.footer-brand {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-}
-
-.footer-tagline {
-  margin-top: 10px;
-  font-size: 0.85rem;
-  color: var(--sage-pale);
-  max-width: 26ch;
+.footer-logo {
+  height: 48px;
+  width: auto;
 }
 
 .footer-nav {
@@ -516,6 +523,17 @@ button {
 
 .prose p {
   color: var(--text);
+}
+
+.bio-signature {
+  display: block;
+  height: 64px;
+  width: auto;
+  margin: 8px 0 32px;
+}
+
+.bio-cta {
+  margin-top: 8px;
 }
 
 .divider {
@@ -689,10 +707,10 @@ button {
 
 .start-step-num {
   font-family: var(--font-heading);
-  font-size: 2.4rem;
+  font-size: 1.5rem;
   color: var(--terracotta);
   line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .start-card h3 {
@@ -845,15 +863,27 @@ button {
   height: auto;
 }
 
-.approach-hypnosis {
-  background: var(--peach-soft);
-  border-radius: var(--radius-lg);
-  padding: 40px;
-  margin: 12px 0;
+.perspective-item {
+  margin-bottom: 28px;
+}
+
+.perspective-item h3 {
+  font-size: 1.15rem;
+  color: var(--sage-deep);
+  margin-bottom: 0.3em;
+}
+
+.perspective-item p {
+  margin-bottom: 0;
+}
+
+.perspectives-closing {
+  margin-top: 8px;
+  font-style: italic;
 }
 
 .approach-cta {
-  background: var(--sage);
+  background: var(--terracotta);
   border-radius: var(--radius-lg);
   padding: 56px 44px;
   text-align: center;
@@ -1022,7 +1052,7 @@ button {
   text-align: center;
 }
 
-.gs-step .start-step-num { font-size: 1.9rem; }
+.gs-step .start-step-num { font-size: 1.3rem; }
 
 @media (max-width: 760px) {
   .gs-steps { grid-template-columns: 1fr; }

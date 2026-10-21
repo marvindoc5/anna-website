@@ -87,7 +87,7 @@
     var agreeRow = agreeCheckbox.closest(".checkbox-row");
     if (!agreeCheckbox.checked) {
       if (agreeRow) agreeRow.classList.add("has-error");
-      showError(fieldErrorFor(agreeCheckbox), "Please confirm you agree to the Practice Principles before sending your message.");
+      showError(fieldErrorFor(agreeCheckbox), "Please confirm you agree to the Practice Policies before sending your message.");
       firstInvalid = firstInvalid || agreeCheckbox;
     } else {
       if (agreeRow) agreeRow.classList.remove("has-error");

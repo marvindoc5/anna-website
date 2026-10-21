@@ -81,7 +81,7 @@
         <div class="form-group">
           <div class="checkbox-row {{ 'has-error' if errors and errors.agree else '' }}">
             <input type="checkbox" id="agree" name="agree" required {{ 'checked' if form_data and form_data.agree }}>
-            <label for="agree">I have read and agree to the <a href="{{ url_for('principles') }}">Practice Principles</a>.</label>
+            <label for="agree">I have read and agree to the <a href="{{ url_for('principles') }}">Practice Policies</a>.</label>
           </div>
           {% if errors and errors.agree %}<div class="field-error is-visible">{{ errors.agree }}</div>{% endif %}
         </div>

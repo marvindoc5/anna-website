@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Matsi Counselling{% endblock %}</title>
-  <meta name="description" content="{% block meta_description %}Matsi Counselling — psychotherapy, counselling and hypnotherapy with Anna Matsi in Berlin.{% endblock %}">
+  <meta name="description" content="{% block meta_description %}Matsi Counselling — a counselling practice offering counselling and hypnotherapy with Anna Matsi in Berlin.{% endblock %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -22,7 +22,9 @@
     </div>
     <nav class="main-nav">
       <div class="container">
-        <a class="brand" href="{{ url_for('home') }}">Matsi Counselling</a>
+        <a class="brand" href="{{ url_for('home') }}">
+          <img src="{{ url_for('static', path='images/logo-header.png') }}" alt="Matsi Counselling">
+        </a>
         <ul class="nav-links">
           <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
           <li><a href="{{ url_for('about') }}" class="{{ 'active' if active_page == 'about' else '' }}">About Me</a></li>
@@ -54,8 +56,7 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand">Matsi Counselling</div>
-          <p class="footer-tagline">A space to make sense of your experiences, one conversation at a time.</p>
+          <img class="footer-logo" src="{{ url_for('static', path='images/logo-footer.png') }}" alt="Matsi Counselling">
         </div>
         <div>
           <div class="footer-heading">Navigation</div>
@@ -65,7 +66,7 @@
             <li><a href="{{ url_for('approach') }}">My Approach</a></li>
             <li><a href="{{ url_for('services') }}">Services</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
-            <li><a href="{{ url_for('principles') }}">Practice Principles</a></li>
+            <li><a href="{{ url_for('principles') }}">Practice Policies</a></li>
           </ul>
         </div>
         <div>

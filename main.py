@@ -157,7 +157,7 @@ def validate_contact_form(name, email, interest, counselling_type, agree):
         errors["counselling_type"] = "Please select a type of counselling."
 
     if not agree:
-        errors["agree"] = "Please confirm you agree to the Practice Principles."
+        errors["agree"] = "Please confirm you agree to the Practice Policies."
 
     return errors
 
